@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0"/> -->
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>辅导员::..::闽南师范大学</title>
+     
+    <!-- Bootstrap -->
+    <link href="{CSS_PATH}bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="{JS_PATH}jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="{JS_PATH}main.js"></script>
+    <link href="{CSS_PATH}nav.css" rel="stylesheet">
+    <link href="{CSS_PATH}index.css" rel="stylesheet">
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="{JS_PATH}html5shiv.min.js"></script>
+      <script src="{JS_PATH}respond.min.js"></script>
+    <![endif]-->
+  <style type="text/css">
+    body{padding:0;margin:0;}
+    .box{position:relative;}
+    .cont{height:180px;overflow:hidden;}
+    .item{background:rgba(0,0,0,0.5);color:#fff;font-size:50px;position:absolute;left:0;bottom:0;width:100%;text-align:right;line-height:20px;height:20px;display: none}
+    .item a{cursor:pointer;text-shadow:0 0 3px rgba(0,0,0,0.8);}
+    a.seld{color:#06C;}
+    a.hide{display:none;}
+
+   /*跑马灯*/
+    <!-- 
+    #demo { 
+    background: #eee; 
+    overflow:hidden; 
+    border: 1px dashed #CCC; 
+    width: 490px; 
+    } 
+    #demo img { 
+    height:180px;
+    padding:20px;
+    } 
+    #indemo { 
+    float: left; 
+    width: 800%; 
+    } 
+    #demo1 { 
+    float: left; 
+    } 
+    #demo2 { 
+    float: left; 
+    } 
+    --> 
+
+</style>
+
+
+  </head>
+
+  <body>
+    <div class="main">
+      <header><img height="200" width="1024" src="{IMG_PATH}header3.gif" /></header>
+    <nav style="margin-top: 30px;">
+        <div id="nav_main">
+  <div class="inner1">
+    <div class="inner2">
+      <div id="nav_main_bar">
+      {pc:content action="category" catid="0" num="7" siteid="$siteid" order="listorder ASC"}
+        <ul>
+
+          <li class="current">
+            <div class="bm">
+              <div class="inner">
+                <div class="inner3">
+                  <div class="inner4"><a href="#">首页</a></div>
+                </div>
+              </div>
+            </div>
+          </li>
+          {loop $data $r}
+          <li>
+            <div class="bm">
+              <div class="inner">
+                <div class="inner3">
+                  <div class="inner4"><a href="{$r[url]}">{$r[catname]}</a></div>
+                </div>
+              </div>
+            </div>
+            <div class="lm">
+              <div class="inner5">
+                <div class="inner6">
+                {pc:content action="category" catid="$r[catid]" num="25" siteid="$siteid" order="listorder ASC"}
+                  {if !empty($data)}
+                  <ul>
+                    {loop $data $rr}
+                      
+                        <li><a href="{$rr[url]}">{$rr[catname]}</a></li>
+                      
+                    {/loop}
+                    <li class="clear"></li>
+                  </ul>
+                  {/if}
+                {/pc}
+                </div>
+              </div>
+            </div>
+          </li>
+          {/loop}
+        </ul>
+         {/pc}
+         {php echo runhook('glogal_menu')}
+      </div>
+    </div>
+  </div>
+</div>
+</nav>
+

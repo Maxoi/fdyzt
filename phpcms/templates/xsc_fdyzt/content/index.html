@@ -1,0 +1,205 @@
+{template "content","header"}
+ <section>
+ {pc:content  action="position" posid="2" order="listorder DESC" num="4"}
+           {loop $data $r}
+                <h4 class="blue"><a href="{$r[url]}" title="{$r[title]}">{str_cut($r[title],36,'')}</a></h4>
+                <p>{if $n==1}<img src="{thumb($r[thumb],90,60)}" width="90" height="60"/>{/if}{str_cut($r[description],112)}</p>
+                <div class="bk20 hr"><hr /></div>
+               {/loop}  
+             {/pc}   
+        <div class="left" >
+            <div class="container">
+            <div class="row" style="margin: 10px;">
+              <div class="col-md-6   col-sm-6 col-xs-6 ">
+                  <div style="float: left;margin-right: 5px;"> </div>
+                  <!--<p><a href="#"><img style="border-radius: 30px;" width="220" height="170" src="./images/cyx.jpg" /></a></p>-->
+                 <h2>辅导员誓词</h2>
+                <p>我志愿成为一名高校辅导员，</p>
+                <p>拥护党的领导，献身教育事业，</p>
+                <p>恪守职业规范，提升专业素养，</p>
+                <p>情系学生成长，做好良师益友， </p>
+                <p>为培养社会主义合格建设者和可靠接班人而努力奋斗！</p>
+              </div>
+              <div class="col-md-6  col-sm-6 col-xs-6" style="background: none;border:none;box-shadow:none;x">
+                <div id="demo" style="width:350px;height:150px;margin-top:15px;"> 
+                  <div id="indemo"> 
+                  <div id="demo1"> 
+                    <a href="#"><img src="{IMG_PATH}1.png" border="0" /></a> 
+                    <a href="#"><img src="{IMG_PATH}1.png" border="0" /></a> 
+                    <a href="#"><img src="{IMG_PATH}1.png" border="0" /></a> 
+                    <a href="#"><img src="{IMG_PATH}1.png" border="0" /></a> 
+                  
+                  </div> 
+                  <div id="demo2"></div> 
+                  </div> 
+                </div> 
+                
+
+              </div>
+            </div>
+            <div class="row" style="margin: 10px;">
+
+              {pc:content action="lists" num="4" catid="10" }
+              <div class="col-md-6 col-xs-5 " style="margin-top: 10px;" ><h2>两学一做 </h2>
+                <ul>
+                  {loop $data $r}
+                  <li><a href="{$r[url]}">{$r[title]}</a><em>2010-02-01</em></li>
+                  {/loop}
+                </ul>
+              </div>
+              {/pc}
+              {pc:content action="lists" num="4" catid="11" }
+              <div class="col-md-offset-0 col-xs-offset-2 col-xs-5 col-md-6 " style="margin-top: 10px;"><h2>职业能力</h2>
+                <ul>
+                  {loop $data $r}
+                  <li><a href="{$r[url]}">{$r[title]}</a><em>2010-02-01</em></li>
+                  {/loop}
+                </ul>
+              </div>
+              {/pc}
+            </div>
+            <div class="row" style="margin: 10px;">
+            <div class="col-md-4" style="border-right: 1px solid #ccc;" >
+            {pc:content action="lists" num="4" catid="12" }
+                <div class="studyGroup">
+                  <h2>学习小组</h2>
+                  <ul>
+                      {loop $data $r}
+                      <li><a href="{$r[url]}">{$r[title]}</a><em>2010-02-01</em></li>
+                      {/loop}
+                  </ul>
+                </div>
+              {/pc}
+              </div>
+                  {pc:content action="lists" num="4" catid="13" }
+                  <div class="col-md-4" style="border-right: 1px solid #ccc;"><h2>工作案例 </h2>
+                    <ul>
+                        {loop $data $r}
+                        <li><a href="{$r[url]}">{$r[title]}</a><em>2010-02-01</em></li>
+                        {/loop}
+                    </ul>
+                  </div>
+                  {/pc}
+                  {pc:content action="lists" num="4" catid="14" }
+                  <div class="col-md-4 "><h2>他山之石</h2>
+                    <ul>
+                        {loop $data $r}
+                        <li><a href="{$r[url]}">{$r[title]}</a><em>2010-02-01</em></li>
+                        {/loop}
+                    </ul>
+                  </div>
+                  {/pc}
+            </div>
+            <div class="row" style="margin: 10px;">
+            {pc:content action="lists" num="4" catid="15" }
+              <div class="col-xs-6 " style="border-right: 1px solid #ccc;"><h2>优秀人物 </h2>
+                <ul>
+                    {loop $data $r}
+                        <li><a href="{$r[url]}">{$r[title]}</a><em>2010-02-01</em></li>
+                    {/loop}
+                </ul>
+              </div>
+              {/pc}
+
+            {pc:content action="lists" num="4" catid="16" }
+              <div class="col-xs-6  md-hidden sm-hidden"><h2>精品项目 </h2>
+                <ul>
+                    {loop $data $r}
+                        <li><a href="{$r[url]}">{$r[title]}</a><em>2010-02-01</em></li>
+                    {/loop}
+                </ul>
+              </div>
+            {/pc}
+
+              <div class="link">
+                <select>
+
+               <option value="0">+++友情链接+++</option>
+               <option value="1">+++友情链接+++</option>
+               <option value="2">+++友情链接+++</option>
+               <option value="3">+++友情链接+++</option>
+               <option value="3">+++友情链接+++</option>
+               <option value="3">+++友情链接+++</option>
+               <option value="3">+++友情链接+++</option>
+
+              </select>
+
+               <select>
+
+               <option value="0">+++友情链接+++</option>
+               <option value="1">+++友情链接+++</option>
+               <option value="2">+++友情链接+++</option>
+               <option value="3">+++友情链接+++</option>
+               <option value="3">+++友情链接+++</option>
+               <option value="3">+++友情链接+++</option>
+               <option value="3">+++友情链接+++</option>
+
+              </select>
+
+              <select>
+
+               <option value="0">+++友情链接+++</option>
+               <option value="1">+++友情链接+++</option>
+               <option value="2">+++友情链接+++</option>
+               <option value="3">+++友情链接+++</option>
+               <option value="3">+++友情链接+++</option>
+               <option value="3">+++友情链接+++</option>
+               <option value="3">+++友情链接+++</option>
+
+              </select>
+
+              <select>
+
+               <option value="0">+++友情链接+++</option>
+               <option value="1">+++友情链接+++</option>
+               <option value="2">+++友情链接+++</option>
+               <option value="3">+++友情链接+++</option>
+               <option value="3">+++友情链接+++</option>
+               <option value="3">+++友情链接+++</option>
+               <option value="3">+++友情链接+++</option>
+
+              </select>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+        <div class="right" >
+          <div style="margin-left: 45px;">辅导员微博</div> 
+          <DIV align=center>
+          <IFRAME  src="wb.php" frameBorder=0 marginwidth=0 marginheight=0 scrolling=yes style="width168:px;height:500px;" width=168 height=500 scrolling=yes ALLOWTRANSPARENCY="true">
+           
+          </IFRAME>
+          </DIV>
+         
+          <!--<div>
+
+          <iframe width="100%" height="100" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=100&fansRow=1&ptype=1&speed=0&skin=3&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=1774094422&verifier=253c5023&dpc=1"></iframe>
+          <iframe width="100%" height="100" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=100&fansRow=1&ptype=1&speed=0&skin=3&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=1774094422&verifier=253c5023&dpc=1"></iframe>
+          <iframe width="100%" height="100" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=100&fansRow=1&ptype=1&speed=0&skin=3&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=1774094422&verifier=253c5023&dpc=1"></iframe>
+          
+          </div>-->
+
+
+
+        </div>
+
+        <div class="right" style="margin-top: 30px;" >
+
+            
+          <div style="text-align: center;border-bottom: 1px solid #ccc;">学习剪报</div>
+          {pc:content action="lists" num="4" catid="19" }
+          <div class="study">
+                  <ul>
+                      {loop $data $r}
+                      <li><a href="{$r[url]}">{$r[title]}</a></li>
+                      {/loop}
+                  </ul>
+          {/pc}
+          </div>
+        
+        </div>
+      </section>
+
+{template "content","footer"}
