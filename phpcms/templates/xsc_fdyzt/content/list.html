@@ -1,5 +1,72 @@
 {template "content","header"}
-<!--main-->
+<style>
+    
+    .left_list{
+      width:25%;
+      float: left;
+      margin-right: 10px;
+    }
+    .right_list{
+      width:73%;
+      float:right;
+      border:1px solid #ccc;
+      background:#fff;
+      margin-bottom: 20px;
+    }
+    .right_list h3{
+      background: url({IMG_PATH}title3.png) left top no-repeat;
+    }
+    .more{
+        float: right;
+        color:#339900;
+    }
+    .right_list ul li{
+      padding:8px;
+      border-bottom:1px dashed #ccc;
+      color:#CC9900;
+    }
+    .right_list ul li a:hover{
+        text-decoration:none;
+        color:#00CC00;
+    }
+    .right_list ul li em{
+      font-style:normal;
+      float:right;
+      color:#000;
+    }
+    .hot{
+      padding:2px;
+      border:1px solid #ccc;
+      margin-bottom:15px;
+      background: #fff;
+    }
+    .hot ul li{
+      padding: 2px 10px;
+      color:#CC9900;
+    }
+    .hot ul li a{
+        color:#111;
+    }
+    .hot ul li a:hover{
+        text-decoration:none;
+        color:#00CC00;
+    }
+    h3{
+      background: red;
+      color:#fff;
+      padding: 0;
+      margin: 0;
+      padding-left:20px;
+      margin-top: 10px;
+      font-weight: bold;
+      height: 30px;
+      line-height: 20px;
+      font-size:14px;
+      background: url({IMG_PATH}title.png) left top no-repeat;
+      /* border-radius: 10px 0px 0px 10px; */
+    }
+  </style>
+<!--main
 <div class="main">
 	<div class="col-left">
     	<div class="crumbs"><a href="{siteurl($siteid)}">首页</a><span> > </span>{catpos($catid)} 列表</div>
@@ -36,5 +103,53 @@
             {/pc}
         </div>
     </div>
-</div>
+</div>-->
+
+
+<section>
+
+
+        <div class="left_list">
+          <div class="hot">
+                <h3>频道总排行</h3>
+                <ul>
+                {pc:content action="hits" catid="$catid" num="10" order="views DESC" cache="3600"}
+                    {loop $data $v}
+                        <li>● <a href="{$v[url]}" target="_blank"{title_style($v[style])}>{str_cut($v[title],29,'..')}</a></li>
+                    {/loop}
+                {/pc}
+                </ul>
+          </div>
+          <div class="hot">
+            
+                <h3>频道本月排行</h3>
+                <ul>
+                    {pc:content action="hits" catid="$catid" num="8" order="monthviews DESC" cache="3600"}
+                        {loop $data $v}
+                            <li>{number_format($v[monthviews])} <a href="{$v[url]}" {title_style($v[style])} title="{$v[title]}">{str_cut($v[title],56,'...')}</a></li>
+                        {/loop}
+                    {/pc}
+                </ul>
+          </div>
+  
+        </div>
+
+        <div class="right_list">
+            <h3>文章列表<a href="{$v[url]}" class="more"></a></h3>
+            <div class="list">
+                {pc:content action="lists" catid="$v[catid]" num="5" order="id DESC"}
+                <ul>
+                    {loop $data $v}
+                        <li>● <a href="{$v[url]}" target="_blank" {title_style($v[style])}>{$v[title]}</a></li>
+                    {/loop}
+                </ul> 
+                {/pc}
+            </div>
+        </div>
+
+
+      </section>
+
+
+
 {template "content","footer"}

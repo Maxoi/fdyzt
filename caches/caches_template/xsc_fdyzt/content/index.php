@@ -1,12 +1,6 @@
 <?php defined('IN_PHPCMS') or exit('No permission resources.'); ?><?php include template("content","header"); ?>
  <section>
- <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=79d92623a8337007f1f3bcdd35d5f304&action=position&posid=2&order=listorder+DESC&num=4\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'position')) {$data = $content_tag->position(array('posid'=>'2','order'=>'listorder DESC','limit'=>'4',));}?>
-           <?php $n=1;if(is_array($data)) foreach($data AS $r) { ?>
-                <h4 class="blue"><a href="<?php echo $r['url'];?>" title="<?php echo $r['title'];?>"><?php echo str_cut($r[title],36,'');?></a></h4>
-                <p><?php if($n==1) { ?><img src="<?php echo thumb($r[thumb],90,60);?>" width="90" height="60"/><?php } ?><?php echo str_cut($r[description],112);?></p>
-                <div class="bk20 hr"><hr /></div>
-               <?php $n++;}unset($n); ?>  
-             <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>   
+
         <div class="left" >
             <div class="container">
             <div class="row" style="margin: 10px;">
@@ -14,6 +8,7 @@
                   <div style="float: left;margin-right: 5px;"> </div>
                   <!--<p><a href="#"><img style="border-radius: 30px;" width="220" height="170" src="./images/cyx.jpg" /></a></p>-->
                  <h2>辅导员誓词</h2>
+                <p>　</p>
                 <p>我志愿成为一名高校辅导员，</p>
                 <p>拥护党的领导，献身教育事业，</p>
                 <p>恪守职业规范，提升专业素养，</p>
@@ -24,11 +19,12 @@
                 <div id="demo" style="width:350px;height:150px;margin-top:15px;"> 
                   <div id="indemo"> 
                   <div id="demo1"> 
-                    <a href="#"><img src="<?php echo IMG_PATH;?>1.png" border="0" /></a> 
-                    <a href="#"><img src="<?php echo IMG_PATH;?>1.png" border="0" /></a> 
-                    <a href="#"><img src="<?php echo IMG_PATH;?>1.png" border="0" /></a> 
-                    <a href="#"><img src="<?php echo IMG_PATH;?>1.png" border="0" /></a> 
                   
+                    <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=2f999779335e98949fbdcc0d945fee2b&action=lists&catid=11&order=id+DESC&thumb=1&num=10\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$data = $content_tag->lists(array('catid'=>'11','order'=>'id DESC','thumb'=>'1','limit'=>'10',));}?>
+                    <?php $n=1;if(is_array($data)) foreach($data AS $r) { ?>
+                      <a href="#"><img src="<?php echo thumb($r[thumb],90,0);?>" width="90" height="60"/></a> 
+                      <?php $n++;}unset($n); ?>
+                    <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
                   </div> 
                   <div id="demo2"></div> 
                   </div> 
@@ -48,7 +44,7 @@
                 </ul>
               </div>
               <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
-              <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=b7616612edcef12973fba8ff9d90b0a3&action=lists&num=4&catid=11\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$data = $content_tag->lists(array('catid'=>'11','limit'=>'4',));}?>
+              <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=2f999779335e98949fbdcc0d945fee2b&action=lists&catid=11&order=id+DESC&thumb=1&num=10\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$data = $content_tag->lists(array('catid'=>'11','order'=>'id DESC','thumb'=>'1','limit'=>'10',));}?>
               <div class="col-md-offset-0 col-xs-offset-2 col-xs-5 col-md-6 " style="margin-top: 10px;"><h2>职业能力</h2>
                 <ul>
                   <?php $n=1;if(is_array($data)) foreach($data AS $r) { ?>

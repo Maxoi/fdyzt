@@ -1,12 +1,6 @@
 {template "content","header"}
  <section>
- {pc:content  action="position" posid="2" order="listorder DESC" num="4"}
-           {loop $data $r}
-                <h4 class="blue"><a href="{$r[url]}" title="{$r[title]}">{str_cut($r[title],36,'')}</a></h4>
-                <p>{if $n==1}<img src="{thumb($r[thumb],90,60)}" width="90" height="60"/>{/if}{str_cut($r[description],112)}</p>
-                <div class="bk20 hr"><hr /></div>
-               {/loop}  
-             {/pc}   
+
         <div class="left" >
             <div class="container">
             <div class="row" style="margin: 10px;">
@@ -14,6 +8,7 @@
                   <div style="float: left;margin-right: 5px;"> </div>
                   <!--<p><a href="#"><img style="border-radius: 30px;" width="220" height="170" src="./images/cyx.jpg" /></a></p>-->
                  <h2>辅导员誓词</h2>
+                <p>　</p>
                 <p>我志愿成为一名高校辅导员，</p>
                 <p>拥护党的领导，献身教育事业，</p>
                 <p>恪守职业规范，提升专业素养，</p>
@@ -24,11 +19,12 @@
                 <div id="demo" style="width:350px;height:150px;margin-top:15px;"> 
                   <div id="indemo"> 
                   <div id="demo1"> 
-                    <a href="#"><img src="{IMG_PATH}1.png" border="0" /></a> 
-                    <a href="#"><img src="{IMG_PATH}1.png" border="0" /></a> 
-                    <a href="#"><img src="{IMG_PATH}1.png" border="0" /></a> 
-                    <a href="#"><img src="{IMG_PATH}1.png" border="0" /></a> 
                   
+                    {pc:content  action="lists" catid="11" order="id DESC" thumb="1" num="10"}
+                    {loop $data $r}
+                      <a href="#"><img src="{thumb($r[thumb],90,0)}" width="90" height="60"/></a> 
+                      {/loop}
+                    {/pc}
                   </div> 
                   <div id="demo2"></div> 
                   </div> 
@@ -48,7 +44,7 @@
                 </ul>
               </div>
               {/pc}
-              {pc:content action="lists" num="4" catid="11" }
+              {pc:content  action="lists" catid="11" order="id DESC" thumb="1" num="10"}
               <div class="col-md-offset-0 col-xs-offset-2 col-xs-5 col-md-6 " style="margin-top: 10px;"><h2>职业能力</h2>
                 <ul>
                   {loop $data $r}
