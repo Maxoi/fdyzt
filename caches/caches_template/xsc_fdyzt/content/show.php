@@ -85,62 +85,112 @@
 		margin-top:30px;
 		font-size:20px;
 	}
-	
+	 .right_list{
+      float:left;
+      border:1px solid #ccc;
+      background:#fff;
+      margin-bottom: 20px;
+    }
+    .right_list h3{
+      background: url(<?php echo IMG_PATH;?>title3.png) left top no-repeat;
+    }
+    .more{
+        float: right;
+        color:#339900;
+    }
+    .right_list ul li{
+      padding:8px;
+      border-bottom:1px dashed #ccc;
+      color:#CC9900;
+    }
+    .right_list ul li a:hover{
+        text-decoration:none;
+        color:#00CC00;
+    }
+    .right_list ul li em{
+      font-style:normal;
+      float:right;
+      color:#000;
+    }
+
+
   </style>
  <section>
         <div class="content_left">
 			<h4><?php echo $title;?></h4>
 			<p><?php echo $inputtime;?> 录入者：<?php echo $username;?> 来源:<?php echo $copyfrom;?> 浏览:<span id="hits"></span>次</p>
-
 			<div class="content">
-			<p>
-			
-	为贯彻落实校党委林晓峰书记在学校党建工作会议上的工作要求，进一步加强辅导员队伍职业化建设，促进党员干部学习和创新，近日，学生处处长林致远带领我校20多名辅导
-	到福州考察学习。
-3月30日、31日，第五届全省高校辅导员职业能力比赛复赛、决赛在福建师范大学举行，我校辅导员来到比赛现场观摩学习，全程跟踪赛况，并为代表我校参赛的外国语学院辅导员罗	立满老师加油助威。
-4月1日上午，一行人来到福建师范大学团委，参观了工作长廊、新媒体人才流动站、舆情监控中心等。在交流座谈会上，福建师大团委书记陈志勇详细介绍了新媒体转型的具体做法、经验分享、实现路径、工作思考和网络空间五个内容，系统介绍了该校网络媒体工作的典型经验。随后，大家来到福建师大学生处，就学生工作队伍建设、辅导员协会建设、思想政治教育、学生资助、心理健康教育、学风建设等工作，与该校学生处领导、辅导员进行了深入的交流。
-下午，一行人来到福州外语外贸学院考察学习。老师们参观了教师发展中心、图书馆、学生发展中心和学生服务中心，并进行座谈交流，了解该校特色育人工作体系。作为我省发展潜力排名居首位的民办本科高校，该校的很多创新做法和工作特色都给老师们带来触动和启发。
-本次学习活动是推进我校学习型政工干部队伍建设的第一阶段活动，接下来，学生处将结合我校学生工作发展的实际需要，分批次、分层次陆续开展各类主题学习活动，促进广大政工干部不断创新工作思路，努力提升学生工作科学化水平。
-	</p>
-			
+			<p >
+				<?php echo $content;?>
+				</p>
 			</div>
-			<div class="tag">Tags:</div>
-			<div class="page"><div class="page_left"><a href="#">上一篇：学生处召开辅导员考察学习总结交..</a></div><div class="page_right"><a href="#">下一篇：学生处、保卫处组织安全稳定工作..</a>
+		<!--简报列表-->
+		<?php if($catid==22) { ?>
+			<?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=a2d462397efec42df4b85f763ab912fb&action=lists&catid=22&num=5&order=id+DESC\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$data = $content_tag->lists(array('catid'=>'22','order'=>'id DESC','limit'=>'5',));}?>
+	        <div class="right_list">
+	            <div class="list">
+	                <ul>
+	                    <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=a2d462397efec42df4b85f763ab912fb&action=lists&catid=22&num=5&order=id+DESC\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$data = $content_tag->lists(array('catid'=>'22','order'=>'id DESC','limit'=>'5',));}?>
+	                        <?php $n=1;if(is_array($data)) foreach($data AS $v) { ?>
+	                            <li>● <a href="<?php echo $v['url'];?>" target="_blank"<?php echo title_style($v[style]);?>><?php echo $v['title'];?></a></li>
+	                        <?php $n++;}unset($n); ?>
+	                    <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
+	                </ul>
+	            </div>
+	        </div>
+	     
+	       <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
+       <?php } ?>
+
+
+
+			<!--简报列表-->
+
+			<div class="tag">Tags:<?php $n=1;if(is_array($keywords)) foreach($keywords AS $keyword) { ?><a href="<?php echo APP_PATH;?>index.php?m=content&c=tag&a=lists&tag=<?php echo urlencode($keyword);?>" class="blue"><?php echo $keyword;?></a> 	<?php $n++;}unset($n); ?></div>
+			<div class="page"><div class="page_left">上一篇：<a href="<?php echo $previous_page['url'];?>"><?php echo $previous_page['title'];?></a></div><div class="page_right">下一篇：<a href="<?php echo $next_page['url'];?>"><?php echo $next_page['title'];?></a>
 </div></div>
 		</div>
 		<div class="content_right">
 			<div class="hot">
-				<h3>最热文章</h3>
+				<h3>最热点击</h3>
+				<?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=aeb1694834791dcb279c3383ccded579&action=hits&catid=10\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'hits')) {$data = $content_tag->hits(array('catid'=>'10','limit'=>'20',));}?>
                 <ul>
-                    <li>● <a href="#">这是条很条很好新闻.....</a></li>
-                    <li>● <a href="#">这是条很条一条很条很新闻.....</a></li>
-                    <li>● <a href="#">这是一条很很好条很的新闻.....</a></li>
-                    <li>● <a href="#">这是一条很条好条很的新闻.....</a></li>
-                    <li>● <a href="#">这是条很条很条很新闻.....</a></li>
+                	<?php $n=1;if(is_array($data)) foreach($data AS $v) { ?>
+                    <li>● <a href="<?php echo $v['url'];?>"><?php echo $v['title'];?></a></li>
+                	<?php $n++;}unset($n); ?>
                 </ul>
+                <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
           </div>
 		  <div class="hot">
-				<h3>最热文章</h3>
+				<h3>工作案例</h3>
+				<?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=09c2d1c3b63a70fc2b2636bdf8313a5d&action=hits&catid=13\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'hits')) {$data = $content_tag->hits(array('catid'=>'13','limit'=>'20',));}?>
                 <ul>
-                    <li>● <a href="#">这是条很条很好新闻.....</a></li>
-                    <li>● <a href="#">这是条很条一条很条很新闻.....</a></li>
-                    <li>● <a href="#">这是一条很很好条很的新闻.....</a></li>
-                    <li>● <a href="#">这是一条很条好条很的新闻.....</a></li>
-                    <li>● <a href="#">这是条很条很条很新闻.....</a></li>
+                	<?php $n=1;if(is_array($data)) foreach($data AS $v) { ?>
+                    <li>● <a href="<?php echo $v['url'];?>"><?php echo $v['title'];?></a></li>
+                	<?php $n++;}unset($n); ?>
                 </ul>
+                <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
           </div>
 		  <div class="hot">
-				<h3>最热文章</h3>
+				<h3>优秀人物</h3>
+				<?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=272262aa38858562a8547f009eca2c8c&action=hits&catid=15\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'hits')) {$data = $content_tag->hits(array('catid'=>'15','limit'=>'20',));}?>
                 <ul>
-                    <li>● <a href="#">这是条很条很好新闻.....</a></li>
-                    <li>● <a href="#">这是条很条一条很条很新闻.....</a></li>
-                    <li>● <a href="#">这是一条很很好条很的新闻.....</a></li>
-                    <li>● <a href="#">这是一条很条好条很的新闻.....</a></li>
-                    <li>● <a href="#">这是条很条很条很新闻.....</a></li>
+                    <?php $n=1;if(is_array($data)) foreach($data AS $v) { ?>
+                    <li>● <a href="<?php echo $v['url'];?>"><?php echo $v['title'];?></a></li>
+                	<?php $n++;}unset($n); ?>
                 </ul>
+                <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
           </div>
 		</div>
       </section>
 
+
+
+
+<script type="text/javascript">
+$(function(){
+  $('.content img').LoadImage(true, 660, 660,'<?php echo IMG_PATH;?>s_nopic.gif');    
+})
+</script>
 <?php include template("content","footer"); ?>
 <script language="JavaScript" src="<?php echo APP_PATH;?>api.php?op=count&id=<?php echo $id;?>&modelid=<?php echo $modelid;?>"></script>

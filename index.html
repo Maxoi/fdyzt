@@ -11,6 +11,8 @@
     <link href="http://127.0.0.1/xsc_fdyzt/fdyzt/statics/css/bootstrap.min.css" rel="stylesheet">
     <script type="text/javascript" src="http://127.0.0.1/xsc_fdyzt/fdyzt/statics/js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="http://127.0.0.1/xsc_fdyzt/fdyzt/statics/js/main.js"></script>
+<script type="text/javascript" src="http://127.0.0.1/xsc_fdyzt/fdyzt/statics/js/jquery.sgallery.js"></script>
+<script type="text/javascript" src="http://127.0.0.1/xsc_fdyzt/fdyzt/statics/js/search_common.js"></script>
     <link href="http://127.0.0.1/xsc_fdyzt/fdyzt/statics/css/nav.css" rel="stylesheet">
     <link href="http://127.0.0.1/xsc_fdyzt/fdyzt/statics/css/index.css" rel="stylesheet">
     
@@ -199,6 +201,35 @@
 </div>
 </nav>
 
+
+<style type="text/css">
+  
+  #demo1{
+    width: 1020px;  overflow: hidden; 
+  }
+  #demo1 ul{ width: 1020px; }
+  #demo1 ul li{color:#fff;list-style-type: none; float: left;  border:#ccc solid 0px; display: block; }
+</style>
+<script type="text/javascript">
+  
+  function scroll(){
+   $("#demo1 ul").animate({"margin-left":"-110px"},function(){
+   //这个是让整个ul先向前滑动个li ,如果要一次性滑动5个~那么就是550px.
+  //想向上滚动就改成 $(".content ul").animate({"margin-top":"-105px"}
+  //想向下滚动就改成 $(".content ul").animate({"margin-top":"105px"}
+  //想向右滚动就改成 $(".content ul").animate({"margin-left":"110px"}
+     $("#demo1 ul li:eq(0)").appendTo($("#demo1 ul"))
+     $("#demo1 ul").css({"margin-left":0})
+  //对应这的这边
+  //想向上滚动就改成 $(".content ul").animate({"margin-top":0}
+  //想向下滚动就改成 $(".content ul").animate({"margin-top":0}
+  //想向右滚动就改成 $(".content ul").animate({"margin-left":0}
+   })
+   }
+    setInterval(scroll,1500);
+  //这上面的是1000是滚动的速度，可以自己调整
+
+</script>
  <section>
 
         <div class="left" >
@@ -220,10 +251,13 @@
                   <div id="indemo"> 
                   <div id="demo1"> 
                   
-                                                              <a href="#"><img src="http://127.0.0.1/xsc_fdyzt/fdyzt/uploadfile/2016/0517/thumb_90_0_20160517104814359.png" width="90" height="60"/></a> 
-                                            <a href="#"><img src="http://127.0.0.1/xsc_fdyzt/fdyzt/uploadfile/2016/0517/thumb_90_0_20160517102721633.jpg" width="90" height="60"/></a> 
-                                            <a href="#"><img src="http://127.0.0.1/xsc_fdyzt/fdyzt/uploadfile/2016/0517/thumb_90_0_20160517104303402.png" width="90" height="60"/></a> 
-                                                            </div> 
+                                        <ul>
+                                          <li><a href="http://127.0.0.1/xsc_fdyzt/fdyzt/index.php?m=content&c=index&a=show&catid=11&id=40"><img src="http://127.0.0.1/xsc_fdyzt/fdyzt/uploadfile/2016/0517/thumb_200_0_20160517104814359.png" width="130" height="100"/></a> </li>
+                                          <li><a href="http://127.0.0.1/xsc_fdyzt/fdyzt/index.php?m=content&c=index&a=show&catid=11&id=39"><img src="http://127.0.0.1/xsc_fdyzt/fdyzt/uploadfile/2016/0517/thumb_200_0_20160517102721633.jpg" width="130" height="100"/></a> </li>
+                                          <li><a href="http://127.0.0.1/xsc_fdyzt/fdyzt/index.php?m=content&c=index&a=show&catid=11&id=7"><img src="http://127.0.0.1/xsc_fdyzt/fdyzt/uploadfile/2016/0517/thumb_200_0_20160517104303402.png" width="130" height="100"/></a> </li>
+                                        </ul>
+                    
+                  </div> 
                   <div id="demo2"></div> 
                   </div> 
                 </div> 
@@ -377,10 +411,10 @@
           <div style="text-align: center;border-bottom: 1px solid #ccc;">学习剪报</div>
                     <div class="study">
                   <ul>
-                                            <li><a href="http://127.0.0.1/xsc_fdyzt/fdyzt/index.php?m=content&c=index&a=show&catid=19&id=34">《学习简报1》</a></li>
-                                            <li><a href="http://127.0.0.1/xsc_fdyzt/fdyzt/index.php?m=content&c=index&a=show&catid=19&id=35">《学习简报2》</a></li>
-                                            <li><a href="http://127.0.0.1/xsc_fdyzt/fdyzt/index.php?m=content&c=index&a=show&catid=19&id=36">《学习简报3》</a></li>
-                                            <li><a href="http://127.0.0.1/xsc_fdyzt/fdyzt/index.php?m=content&c=index&a=show&catid=19&id=37">《学习简报4》</a></li>
+                                            <li><a href="http://127.0.0.1/xsc_fdyzt/fdyzt/index.php?m=content&c=index&a=show&catid=22&id=43">《学习剪报1》</a></li>
+                                            <li><a href="http://127.0.0.1/xsc_fdyzt/fdyzt/index.php?m=content&c=index&a=show&catid=22&id=44">《学习剪报2》</a></li>
+                                            <li><a href="http://127.0.0.1/xsc_fdyzt/fdyzt/index.php?m=content&c=index&a=show&catid=22&id=45">《学习剪报3》</a></li>
+                                            <li><a href="http://127.0.0.1/xsc_fdyzt/fdyzt/index.php?m=content&c=index&a=show&catid=22&id=46">《学习剪报4》</a></li>
                                         </ul>
                     </div>
         

@@ -1,0 +1,3 @@
+<?php exit;?>05-18 11:08:20 | 2 | Missing argument 2 for go(), called in D:\phpStudy\WWW\xsc_fdyzt\fdyzt\caches\caches_template\xsc_fdyzt\content\show.php on line 111 and defined | phpcms\libs\functions\global.func.php | 1450
+<?php exit;?>05-18 11:08:21 | 2 | Missing argument 2 for go(), called in D:\phpStudy\WWW\xsc_fdyzt\fdyzt\caches\caches_template\xsc_fdyzt\content\show.php on line 111 and defined | phpcms\libs\functions\global.func.php | 1450
+<?php exit;?>05-18 11:08:21 | 2 | Missing argument 2 for go(), called in D:\phpStudy\WWW\xsc_fdyzt\fdyzt\caches\caches_template\xsc_fdyzt\content\show.php on line 111 and defined | phpcms\libs\functions\global.func.php | 1450

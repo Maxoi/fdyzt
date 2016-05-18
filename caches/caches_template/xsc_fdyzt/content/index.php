@@ -1,4 +1,33 @@
 <?php defined('IN_PHPCMS') or exit('No permission resources.'); ?><?php include template("content","header"); ?>
+
+<style type="text/css">
+  
+  #demo1{
+    width: 1020px;  overflow: hidden; 
+  }
+  #demo1 ul{ width: 1020px; }
+  #demo1 ul li{color:#fff;list-style-type: none; float: left;  border:#ccc solid 0px; display: block; }
+</style>
+<script type="text/javascript">
+  
+  function scroll(){
+   $("#demo1 ul").animate({"margin-left":"-110px"},function(){
+   //这个是让整个ul先向前滑动个li ,如果要一次性滑动5个~那么就是550px.
+  //想向上滚动就改成 $(".content ul").animate({"margin-top":"-105px"}
+  //想向下滚动就改成 $(".content ul").animate({"margin-top":"105px"}
+  //想向右滚动就改成 $(".content ul").animate({"margin-left":"110px"}
+     $("#demo1 ul li:eq(0)").appendTo($("#demo1 ul"))
+     $("#demo1 ul").css({"margin-left":0})
+  //对应这的这边
+  //想向上滚动就改成 $(".content ul").animate({"margin-top":0}
+  //想向下滚动就改成 $(".content ul").animate({"margin-top":0}
+  //想向右滚动就改成 $(".content ul").animate({"margin-left":0}
+   })
+   }
+    setInterval(scroll,1500);
+  //这上面的是1000是滚动的速度，可以自己调整
+
+</script>
  <section>
 
         <div class="left" >
@@ -21,10 +50,13 @@
                   <div id="demo1"> 
                   
                     <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=2f999779335e98949fbdcc0d945fee2b&action=lists&catid=11&order=id+DESC&thumb=1&num=10\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$data = $content_tag->lists(array('catid'=>'11','order'=>'id DESC','thumb'=>'1','limit'=>'10',));}?>
+                    <ul>
                     <?php $n=1;if(is_array($data)) foreach($data AS $r) { ?>
-                      <a href="#"><img src="<?php echo thumb($r[thumb],90,0);?>" width="90" height="60"/></a> 
-                      <?php $n++;}unset($n); ?>
+                      <li><a href="<?php echo $r['url'];?>"><img src="<?php echo thumb($r[thumb],200,0);?>" width="130" height="100"/></a> </li>
+                    <?php $n++;}unset($n); ?>
+                    </ul>
                     <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
+
                   </div> 
                   <div id="demo2"></div> 
                   </div> 
