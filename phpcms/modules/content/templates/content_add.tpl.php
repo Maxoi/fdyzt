@@ -19,6 +19,8 @@ include $this->admin_tpl('header','admin');?>
     	<div class="col-1">
         	<div class="content pad-6">
 <?php
+//右侧功能注释
+/*
 if(is_array($forminfos['senior'])) {
  foreach($forminfos['senior'] as $field=>$info) {
 	if($info['isomnipotent']) continue;
@@ -38,13 +40,14 @@ if(is_array($forminfos['senior'])) {
 	<h6><?php if($info['star']){ ?> <font color="red">*</font><?php } ?> <?php echo $info['name']?></h6>
 	 <?php echo $info['form']?><?php echo $info['tips']?> 
 <?php
-} }
+} }*/
+
 ?>
-<?php if($_SESSION['roleid']==1 || $priv_status) {?>
+<?php /*if($_SESSION['roleid']==1 || $priv_status) {?>
 <h6><?php echo L('c_status');?></h6>
 <span class="ib" style="width:90px"><label><input type="radio" name="status" value="99" checked/> <?php echo L('c_publish');?> </label></span>
 <?php if($workflowid) { ?><label><input type="radio" name="status" value="1" > <?php echo L('c_check');?> </label><?php }?>
-<?php }?>
+<?php }*/?>
           </div>
         </div>
     </div>
@@ -55,8 +58,10 @@ if(is_array($forminfos['senior'])) {
 <table width="100%" cellspacing="0" class="table_form">
 	<tbody>	
 <?php
+
 if(is_array($forminfos['base'])) {
  foreach($forminfos['base'] as $field=>$info) {
+
 	 if($info['isomnipotent']) continue;
 	 if($info['formtype']=='omnipotent') {
 		foreach($forminfos['base'] as $_fm=>$_fm_value) {

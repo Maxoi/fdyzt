@@ -21,7 +21,7 @@ class admin {
 		self::manage_log();
 		self::check_ip();
 		self::lock_screen();
-		self::check_hash();
+		//self::check_hash(); 阻止hash验证
 		if(pc_base::load_config('system','admin_url') && $_SERVER["HTTP_HOST"]!= pc_base::load_config('system','admin_url')) {
 			Header("http/1.1 403 Forbidden");
 			exit('No permission resources.');

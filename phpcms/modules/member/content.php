@@ -12,6 +12,8 @@ pc_base::load_app_func('global', 'member');
 class content extends foreground {
 	private $times_db;
 	function __construct() {
+
+		$this->db = pc_base::load_model('news_model');
 		parent::__construct();
 	}
 	public function publish() {
@@ -260,7 +262,7 @@ class content extends foreground {
 					$r = $this->content_db->get_one(array('id'=>$id,'username'=>$_username,'sysadd'=>0));
 		
 					if(!$r) showmessage(L('illegal_operation'));
-					if($r['status']==99) showmessage(L('has_been_verified'));
+					//if($r['status']==99) showmessage(L('has_been_verified'));
 					$this->content_db->table_name = $this->content_db->table_name.'_data';
 					$r2 = $this->content_db->get_one(array('id'=>$id));
 					$data = array_merge($r,$r2);
@@ -295,7 +297,23 @@ class content extends foreground {
 	 * 会员删除投稿 ...
 	 */
 	public function delete(){
+		/*退稿方法*/
 		$id = intval($_GET['id']);
+		// $result = $this->db->update(array('status'=>0),array('id'=>60));
+		// print_r($result);
+		$obj = pc_base::load_model('news_model');
+		$title = $obj -> get_one(array("id"=>$id));
+		$title = $title['title'];
+
+
+		$check_content_model = pc_base::load_model('content_check_model');
+		$result = $check_content_model -> update(array("status"=>0),array("title"=>$title));
+		$result2 = $obj->update(array("status"=>0),array("id"=>$id));
+		if($result && $result2){
+			showmessage(L('operation_success'), HTTP_REFERER); 
+		}
+		
+		/*
  		if(!$id){
 			return false;
 		}
@@ -325,8 +343,55 @@ class content extends foreground {
  			$content_db->delete_content($id); //删除文章
  			$check_pushed_db->delete(array('checkid'=>$checkid));//删除对应投稿表
 			showmessage(L('operation_success'), HTTP_REFERER); 
+		}*/
+	}
+
+
+	/**
+	 * 
+	 * 会员恢复退稿 ...
+	 */
+	public function re(){
+		/*恢复方法*/
+		$id = intval($_GET['id']);
+		// $result = $this->db->update(array('status'=>0),array('id'=>60));
+		// print_r($result);
+		$obj = pc_base::load_model('news_model');
+		$title = $obj -> get_one(array("id"=>$id));
+		$title = $title['title'];
+
+
+		$check_content_model = pc_base::load_model('content_check_model');
+		$result = $check_content_model -> update(array("status"=>99),array("title"=>$title));
+		$result2 = $obj->update(array("status"=>99),array("id"=>$id));
+		if($result && $result2){
+			showmessage(L('operation_success'), HTTP_REFERER); 
+		}
+		
+	}
+
+	/**
+	*
+	*
+	*文章彻底删除
+	*/
+	public function delete_confirm(){
+		$id = intval($_GET['id']);
+		// $result = $this->db->update(array('status'=>0),array('id'=>60));
+		// print_r($result);
+		$obj = pc_base::load_model('news_model');
+		$title = $obj -> get_one(array("id"=>$id));
+		$title = $title['title'];
+
+
+		$check_content_model = pc_base::load_model('content_check_model');
+		$result = $check_content_model -> delete(array("title"=>$title));
+		$result2 = $obj->delete(array("id"=>$id));
+		if($result && $result2){
+			showmessage(L('operation_success'), HTTP_REFERER); 
 		}
 	}
+
 	
 	public function info_publish() {
 		$memberinfo = $this->memberinfo;

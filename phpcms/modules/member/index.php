@@ -750,7 +750,8 @@ class index extends foreground {
 			param::set_cookie('_groupid', $groupid, $cookietime);
 			param::set_cookie('_nickname', $nickname, $cookietime);
 			//param::set_cookie('cookietime', $_cookietime, $cookietime);
-			$forward = isset($_POST['forward']) && !empty($_POST['forward']) ? urldecode($_POST['forward']) : 'index.php?m=member&c=index';
+			// $forward = isset($_POST['forward']) && !empty($_POST['forward']) ? urldecode($_POST['forward']) : 'index.php?m=member&c=index';
+			$forward = isset($_POST['forward']) && !empty($_POST['forward']) ? urldecode($_POST['forward']) : 'index.php?m=member&c=content&a=publish';
 			showmessage(L('login_success').$synloginstr, $forward);
 		} else {
 			$setting = pc_base::load_config('system');
@@ -784,7 +785,8 @@ class index extends foreground {
 			param::set_cookie('_groupid', '');
 			param::set_cookie('_nickname', '');
 			param::set_cookie('cookietime', '');
-			$forward = isset($_GET['forward']) && trim($_GET['forward']) ? $_GET['forward'] : 'index.php?m=member&c=index&a=login';
+			// $forward = isset($_GET['forward']) && trim($_GET['forward']) ? $_GET['forward'] : 'index.php?m=member&c=index&a=login';
+			$forward = isset($_GET['forward']) && trim($_GET['forward']) ? $_GET['forward'] : 'index.php';
 			showmessage(L('logout_success').$synlogoutstr, $forward);
 		}
 	}

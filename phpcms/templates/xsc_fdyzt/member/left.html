@@ -4,6 +4,7 @@
        	    <li {if ROUTE_A=="publish"} class="on"{/if}><a href="index.php?m=member&c=content&a=publish"><img src="{IMG_PATH}icon/m_2.png" width="14" height="15" /> {L('online_publish')}</a></li>
             <li {if ROUTE_A=="published"} class="on"{/if}><a href="index.php?m=member&c=content&a=published"><img src="{IMG_PATH}icon/m_3.png" width="14" height="16" /> {L('published_content')}</a></li>
             </ul>
+<!--财务管理部分 
             {if module_exists('pay')}
 <h6 class="title">{L('financial_management')}</h6>
             <ul>
@@ -12,7 +13,9 @@
                 <li{if ROUTE_A!="pay" && ROUTE_C=="spend_list"} class="on"{/if}><a href="index.php?m=pay&c=spend_list&a=init"><img src="{IMG_PATH}icon/table-information.png" width="16" height="16" /> {L('cost_log')}</a></li>
 				<li{if ROUTE_A=="change_credit"} class="on"{/if}><a href="index.php?m=member&c=index&a=change_credit"><img src="{IMG_PATH}icon/coins_add.png" width="16" height="16" /> {L('credit_change')}</a></li>
       </ul>
-      {/if}
+      {/if}-->
+
+      <!--短消息部分 
 {pc:message action="check_new"}
 {php $new_arr = $data;}
 {/pc}
@@ -23,5 +26,6 @@
               <li{if ROUTE_A=="outbox"} class="on"{/if}><a href="index.php?m=message&c=index&a=outbox"><img src="{IMG_PATH}icon/m_10.png" width="16" height="16" /> {L('output_box')}</a></li>
 			   <li{if ROUTE_A=="group"} class="on"{/if}><a href="index.php?m=message&c=index&a=group"><img src="{IMG_PATH}icon/lightbulb.png" width="16" height="16" /> {L('system_message')}{if $new_arr['new_group_count'] >0}<font color=red>({$new_arr['new_group_count']})</font>{/if}</a></li>
           </ul>
+          -->
       <span class="o1"></span><span class="o2"></span><span class="o3"></span><span class="o4"></span>
 </div>

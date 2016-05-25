@@ -7,6 +7,10 @@
   }
   #demo1 ul{ width: 1020px; }
   #demo1 ul li{color:#fff;list-style-type: none; float: left;  border:#ccc solid 0px; display: block; }
+  #demo1 img{
+    height: 140px;
+    width:120px;
+  }
 </style>
 <script type="text/javascript">
   
@@ -30,6 +34,7 @@
 </script>
  <section>
 
+
         <div class="left" >
             <div class="container">
             <div class="row" style="margin: 10px;">
@@ -49,14 +54,22 @@
                   <div id="indemo"> 
                   <div id="demo1"> 
                   
-                    <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=2f999779335e98949fbdcc0d945fee2b&action=lists&catid=11&order=id+DESC&thumb=1&num=10\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$data = $content_tag->lists(array('catid'=>'11','order'=>'id DESC','thumb'=>'1','limit'=>'10',));}?>
+                    <!--<?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=9ab1b9f2867edc438f41bd44269fcc62&action=lists&catid=12&order=id+DESC&thumb=10&num=10\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">修改</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$data = $content_tag->lists(array('catid'=>'12','order'=>'id DESC','thumb'=>'10','limit'=>'10',));}?>
                     <ul>
                     <?php $n=1;if(is_array($data)) foreach($data AS $r) { ?>
-                      <li><a href="<?php echo $r['url'];?>"><img src="<?php echo thumb($r[thumb],200,0);?>" width="130" height="100"/></a> </li>
+                      <li><a href="<?php echo $r['url'];?>"><img src="<?php echo thumb($r[thumb],100,100);?>" width="130" height="130"/></a> </li>
                     <?php $n++;}unset($n); ?>
                     </ul>
-                    <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
-
+                    <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>-->
+                    <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"get\" data=\"op=get&tag_md5=4d0fc8f446b838e0cd18cddd3301b15b&sql=SELECT+url%2Cthumb+FROM+v9_news+WHERE+status%3D99++ORDER+BY+id+DESC\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">修改</a>";}pc_base::load_sys_class("get_model", "model", 0);$get_db = new get_model();$r = $get_db->sql_query("SELECT url,thumb FROM v9_news WHERE status=99  ORDER BY id DESC LIMIT 20");while(($s = $get_db->fetch_next()) != false) {$a[] = $s;}$data = $a;unset($a);?>
+                      <ul>
+                      <?php $n=1;if(is_array($data)) foreach($data AS $r) { ?>
+                        <?php if(!empty($r[thumb])) { ?>
+                        <li><a href="<?php echo $r['url'];?>"><img src="<?php echo thumb($r[thumb],100,100);?>" width="130" height="130"/></a> </li>
+                        <?php } ?>
+                      <?php $n++;}unset($n); ?>
+                      </ul>
+                    {/get}
                   </div> 
                   <div id="demo2"></div> 
                   </div> 
@@ -67,20 +80,21 @@
             </div>
             <div class="row" style="margin: 10px;">
 
-              <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=495a0d745d8b538ce6f35fc84e725caf&action=lists&num=4&catid=10\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$data = $content_tag->lists(array('catid'=>'10','limit'=>'4',));}?>
+              <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=495a0d745d8b538ce6f35fc84e725caf&action=lists&num=4&catid=10\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">修改</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$data = $content_tag->lists(array('catid'=>'10','limit'=>'4',));}?>
               <div class="col-md-6 col-xs-5 " style="margin-top: 10px;" ><h2>两学一做 </h2>
                 <ul>
                   <?php $n=1;if(is_array($data)) foreach($data AS $r) { ?>
-                  <li><a href="<?php echo $r['url'];?>"><?php echo $r['title'];?></a><em>2010-02-01</em></li>
+                  <li><a href="<?php echo $r['url'];?>"><?php echo $r['title'];?></a><em><?php echo date('Y-m-d',$r[inputtime])?></em></li>
                   <?php $n++;}unset($n); ?>
                 </ul>
               </div>
               <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
-              <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=2f999779335e98949fbdcc0d945fee2b&action=lists&catid=11&order=id+DESC&thumb=1&num=10\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$data = $content_tag->lists(array('catid'=>'11','order'=>'id DESC','thumb'=>'1','limit'=>'10',));}?>
+              <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=73aa94670fa3607760e399163580d85d&action=lists&thumb=1&num=4&order=id+DESC&catid=11\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">修改</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$data = $content_tag->lists(array('thumb'=>'1','order'=>'id DESC','catid'=>'11','limit'=>'4',));}?>
               <div class="col-md-offset-0 col-xs-offset-2 col-xs-5 col-md-6 " style="margin-top: 10px;"><h2>职业能力</h2>
                 <ul>
+
                   <?php $n=1;if(is_array($data)) foreach($data AS $r) { ?>
-                  <li><a href="<?php echo $r['url'];?>"><?php echo $r['title'];?></a><em>2010-02-01</em></li>
+                    <li><a href="<?php echo $r['url'];?>"><?php echo $r['title'];?></a><em><?php echo date('Y-m-d',$r[inputtime])?></em></li>
                   <?php $n++;}unset($n); ?>
                 </ul>
               </div>
@@ -88,52 +102,52 @@
             </div>
             <div class="row" style="margin: 10px;">
             <div class="col-md-4" style="border-right: 1px solid #ccc;" >
-            <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=7efd19cd7d1c685600ce4a80e6ba4ca5&action=lists&num=4&catid=12\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$data = $content_tag->lists(array('catid'=>'12','limit'=>'4',));}?>
+            <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=7efd19cd7d1c685600ce4a80e6ba4ca5&action=lists&num=4&catid=12\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">修改</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$data = $content_tag->lists(array('catid'=>'12','limit'=>'4',));}?>
                 <div class="studyGroup">
                   <h2>学习小组</h2>
                   <ul>
                       <?php $n=1;if(is_array($data)) foreach($data AS $r) { ?>
-                      <li><a href="<?php echo $r['url'];?>"><?php echo $r['title'];?></a><em>2010-02-01</em></li>
+                      <li><a href="<?php echo $r['url'];?>"><?php echo $r['title'];?></a><em><?php echo date('Y-m-d',$r[inputtime])?></em></li>
                       <?php $n++;}unset($n); ?>
                   </ul>
                 </div>
               <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
               </div>
-                  <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=f8e8dae0e6541c3da3396b777a2e09ec&action=lists&num=4&catid=13\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$data = $content_tag->lists(array('catid'=>'13','limit'=>'4',));}?>
+                  <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=f8e8dae0e6541c3da3396b777a2e09ec&action=lists&num=4&catid=13\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">修改</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$data = $content_tag->lists(array('catid'=>'13','limit'=>'4',));}?>
                   <div class="col-md-4" style="border-right: 1px solid #ccc;"><h2>工作案例 </h2>
                     <ul>
                         <?php $n=1;if(is_array($data)) foreach($data AS $r) { ?>
-                        <li><a href="<?php echo $r['url'];?>"><?php echo $r['title'];?></a><em>2010-02-01</em></li>
+                        <li><a href="<?php echo $r['url'];?>"><?php echo $r['title'];?></a><em><?php echo date('Y-m-d',$r[inputtime])?></em></li>
                         <?php $n++;}unset($n); ?>
                     </ul>
                   </div>
                   <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
-                  <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=c2629b5a9fb14f5cd14c71bb5b3b4c9f&action=lists&num=4&catid=14\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$data = $content_tag->lists(array('catid'=>'14','limit'=>'4',));}?>
+                  <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=c2629b5a9fb14f5cd14c71bb5b3b4c9f&action=lists&num=4&catid=14\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">修改</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$data = $content_tag->lists(array('catid'=>'14','limit'=>'4',));}?>
                   <div class="col-md-4 "><h2>他山之石</h2>
                     <ul>
                         <?php $n=1;if(is_array($data)) foreach($data AS $r) { ?>
-                        <li><a href="<?php echo $r['url'];?>"><?php echo $r['title'];?></a><em>2010-02-01</em></li>
+                        <li><a href="<?php echo $r['url'];?>"><?php echo $r['title'];?></a><em><?php echo date('Y-m-d',$r[inputtime])?></em></li>
                         <?php $n++;}unset($n); ?>
                     </ul>
                   </div>
                   <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
             </div>
             <div class="row" style="margin: 10px;">
-            <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=e939e2082fb4e93f51567cc49cd4bc56&action=lists&num=4&catid=15\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$data = $content_tag->lists(array('catid'=>'15','limit'=>'4',));}?>
+            <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=e939e2082fb4e93f51567cc49cd4bc56&action=lists&num=4&catid=15\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">修改</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$data = $content_tag->lists(array('catid'=>'15','limit'=>'4',));}?>
               <div class="col-xs-6 " style="border-right: 1px solid #ccc;"><h2>优秀人物 </h2>
                 <ul>
                     <?php $n=1;if(is_array($data)) foreach($data AS $r) { ?>
-                        <li><a href="<?php echo $r['url'];?>"><?php echo $r['title'];?></a><em>2010-02-01</em></li>
+                        <li><a href="<?php echo $r['url'];?>"><?php echo $r['title'];?></a><em><?php echo date('Y-m-d',$r[inputtime])?></em></li>
                     <?php $n++;}unset($n); ?>
                 </ul>
               </div>
               <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
 
-            <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=4c90c78e3fb0051677e1bc6412d71a37&action=lists&num=4&catid=16\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$data = $content_tag->lists(array('catid'=>'16','limit'=>'4',));}?>
+            <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=4c90c78e3fb0051677e1bc6412d71a37&action=lists&num=4&catid=16\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">修改</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$data = $content_tag->lists(array('catid'=>'16','limit'=>'4',));}?>
               <div class="col-xs-6  md-hidden sm-hidden"><h2>精品项目 </h2>
                 <ul>
                     <?php $n=1;if(is_array($data)) foreach($data AS $r) { ?>
-                        <li><a href="<?php echo $r['url'];?>"><?php echo $r['title'];?></a><em>2010-02-01</em></li>
+                        <li><a href="<?php echo $r['url'];?>"><?php echo $r['title'];?></a><em><?php echo date('Y-m-d',$r[inputtime])?></em></li>
                     <?php $n++;}unset($n); ?>
                 </ul>
               </div>
@@ -217,7 +231,7 @@
 
             
           <div style="text-align: center;border-bottom: 1px solid #ccc;">学习剪报</div>
-          <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=0ea5d824dc85735086c11f919aec831f&action=lists&num=4&catid=19\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$data = $content_tag->lists(array('catid'=>'19','limit'=>'4',));}?>
+          <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=091235e6058455a14365d475024008d7&action=lists&num=4&catid=19&order=id+DESC\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">修改</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$data = $content_tag->lists(array('catid'=>'19','order'=>'id DESC','limit'=>'4',));}?>
           <div class="study">
                   <ul>
                       <?php $n=1;if(is_array($data)) foreach($data AS $r) { ?>
